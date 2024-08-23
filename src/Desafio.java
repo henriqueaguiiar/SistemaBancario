@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Desafio {
@@ -6,38 +6,52 @@ public class Desafio {
         Scanner scanner = new Scanner(System.in);
 
         String nome;
-        double cpf;
+        double cpf = 0;
+        boolean cpfValido = false;
         String tipoConta = "CORRENTE";
         double saldo;
         int opcaoDesejada = 0;
 
-
+        System.out.println("\n===== BANCO DEVS =====");
         System.out.println("\n**** Digite seus Dados ****");
         System.out.print("\nEntre com seu Nome: ");
         nome = scanner.nextLine();
-        System.out.print("Digite seu CPF: ");
-        cpf = scanner.nextDouble();
+
+
+        while (!cpfValido) {
+            System.out.print("Digite seu CPF: ");
+            try {
+                cpf = scanner.nextDouble();
+                cpfValido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("CPF inválido. Digite um valor numérico.");
+                scanner.next();
+            }
+        }
+
         System.out.println("Tipo de Conta: " + tipoConta);
         System.out.print("Digite o Saldo da conta: ");
         saldo = scanner.nextDouble();
-        System.out.println("\nSaldo do Cliente: " + "R$:"+ saldo);
+        System.out.println("\nSaldo do Cliente: " + "R$:" + saldo);
 
         String menu = """
-                 *********************************
-                 ┌──────────────────────────────┐
-                 │   *** Digite sua opção ***   │
-                 ├──────────────────────────────┤
-                 │  1 - Consultar saldo         │
-                 │  2 - Transferir valor        │
-                 │  3 - Receber valor           │
-                 │  4 - Sair                    │
-                 └──────────────────────────────┘
+                *********************************
+                ┌──────────────────────────────┐
+                │   *** Digite sua opção ***   │
+                ├──────────────────────────────┤
+                │  1 - Consultar saldo         │
+                │  2 - Transferir valor        │
+                │  3 - Receber valor           │
+                │  4 - Sair                    │
+                └──────────────────────────────┘
                 *********************************
                 """;
 
         while (opcaoDesejada != 4) {
+            System.out.println("\n    ******* BANCO DEVS *******");
             System.out.println(menu);
             opcaoDesejada = scanner.nextInt();
+
 
             if (opcaoDesejada == 1) {
             System.out.println("Saldo do cliente: " + "R$:"+ saldo);
