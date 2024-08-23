@@ -5,21 +5,27 @@ public class Desafio {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String nome = "Henrique";
-        String tipoConta = "Corrente";
-        double saldo = 2500.00;
+        String nome;
+        double cpf;
+        String tipoConta = "CORRENTE";
+        double saldo;
         int opcaoDesejada = 0;
 
 
-        System.out.print("***********************");
-        System.out.print("\nNome do Cliente: " + nome);
-        System.out.print("\nTipo de Conta: " + tipoConta);
-        System.out.println("\nSaldo do Cliente: " + "R$"+ saldo);
+        System.out.println("\n**** Digite seus Dados ****");
+        System.out.print("\nEntre com seu Nome: ");
+        nome = scanner.nextLine();
+        System.out.print("Digite seu CPF: ");
+        cpf = scanner.nextDouble();
+        System.out.println("Tipo de Conta: " + tipoConta);
+        System.out.print("Digite o Saldo da conta: ");
+        saldo = scanner.nextDouble();
+        System.out.println("\nSaldo do Cliente: " + "R$:"+ saldo);
 
         String menu = """
                  *********************************
                  ┌──────────────────────────────┐
-                 │    ** Digite sua opção **    │
+                 │   *** Digite sua opção ***   │
                  ├──────────────────────────────┤
                  │  1 - Consultar saldo         │
                  │  2 - Transferir valor        │
